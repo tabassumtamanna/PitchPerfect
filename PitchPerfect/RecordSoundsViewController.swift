@@ -26,17 +26,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate{
     
     // MARK: - Configuration Recording UI
     func configRecordingUI(isRecording: Bool = false){
-        if isRecording {
-            recordingLebel.text = "Record is processing"
-            recordButton.isEnabled = false
-            stopRecordingButton.isEnabled = true
-            
-        } else {
-            recordingLebel.text = "Tap to Record"
-            recordButton.isEnabled = true
-            stopRecordingButton.isEnabled = false
-        }
         
+        recordButton.isEnabled = !isRecording
+        stopRecordingButton.isEnabled = isRecording
+        recordingLebel.text = isRecording ? "Record is processing" : "Tap to Record"
     }
     
     // MARK: - Record Audio
